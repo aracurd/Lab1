@@ -11,6 +11,7 @@ namespace Lab1_Calc
             double a =0;
             double b = 0;
             string key = "";
+            string oper = "";
             while (repeat != "x")
             {
                 Clear();
@@ -31,37 +32,52 @@ namespace Lab1_Calc
                 }
                 catch (Exception)
                 {
-                    WriteLine("Ошибка ввода!");
+                    WriteLine("Ошибка ввода!", ForegroundColor = ConsoleColor.Red);
                     ReadLine();
                     return;
                 }
-
-                WriteLine($"Результат:{Calculation(a, b, key)}");
+                string result = Calculation(a, b, key, ref oper);
+                WriteLine($"Результат операции {oper} с входными данными а: {a} и в: {b} равен:{result}");
                 WriteLine($"Для проболжения нажмите - Enter, Для выхода - х", ForegroundColor = ConsoleColor.Green);
                 repeat = ReadLine();
             }
         }
 
-        private static string Calculation(double firstVal, double secondVal, string key)
+        private static string Calculation(double firstVal, double secondVal, string key, ref string oper)
         {
             var calc = new Operations();
 
             switch (key)
             {
                 case "/":
-                    return calc.Divide(firstVal, secondVal);
+                {
+                        oper = OperationsEnum.Вычитание.ToString();
+                        return calc.Divide(firstVal, secondVal);
+                }
 
                 case "*":
-                    return calc.Multiplication(firstVal, secondVal);
+                {
+                        oper = OperationsEnum.Умножение.ToString();
+                        return calc.Multiplication(firstVal, secondVal);
+                }
 
                 case "+":
-                    return calc.Addition(firstVal, secondVal);
+                {
+                        oper = OperationsEnum.Прибавление.ToString();
+                        return calc.Addition(firstVal, secondVal);
+                }
 
                 case "-":
-                    return calc.Subtraction(firstVal, secondVal);
+                {
+                        oper = OperationsEnum.Деление.ToString();
+                        return calc.Subtraction(firstVal, secondVal);
+                }
 
                 case "^":
-                    return calc.Exponentiation(firstVal, secondVal);
+                {
+                        oper = OperationsEnum.Экспоненцирование.ToString();
+                        return calc.Exponentiation(firstVal, secondVal);
+                }
 
                 default:
                     return "Операция не выбрана или выбрана не верно!";

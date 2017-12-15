@@ -1,0 +1,6 @@
+C:\Users\Freedom\Source\Repos\Lab1\Bulls and cows\bin\Debug\Bulls and cows.exe.config
+C:\Users\Freedom\Source\Repos\Lab1\Bulls and cows\bin\Debug\Bulls and cows.exe
+C:\Users\Freedom\Source\Repos\Lab1\Bulls and cows\bin\Debug\Bulls and cows.pdb
+C:\Users\Freedom\Source\Repos\Lab1\Bulls and cows\obj\Debug\Bulls and cows.exe
+C:\Users\Freedom\Source\Repos\Lab1\Bulls and cows\obj\Debug\Bulls and cows.pdb
+C:\Users\Freedom\Source\Repos\Lab1\Bulls and cows\obj\Debug\Bulls and cows.csprojResolveAssemblyReference.cache

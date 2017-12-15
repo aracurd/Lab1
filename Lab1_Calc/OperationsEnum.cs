@@ -2,11 +2,11 @@
 {
     public enum OperationsEnum
     {
-        Деление,
-        Умножение,
-        Прибавление,
-        Вычитание,
-        Экспоненцирование
+        Divide,
+        Multiplication,
+        Addition,
+        Subtraction,
+        Exponentiation
     }
 }
  

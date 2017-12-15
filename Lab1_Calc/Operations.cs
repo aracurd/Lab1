@@ -8,7 +8,7 @@ namespace Lab1_Calc
         public string Divide(double a, double b)
         {
             if (b == 0)
-                return "На ноль делить нельзя!";
+                return "You can not divide by zero!";
             return (a/b).ToString(CultureInfo.InvariantCulture);
         }
 

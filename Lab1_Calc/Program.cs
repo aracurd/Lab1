@@ -15,30 +15,30 @@ namespace Lab1_Calc
             while (repeat != "x")
             {
                 Clear();
-                Title = "Простой калькулятор";
+                Title = "Simple calculator";
                 WriteLine($"{Title} \n", ForegroundColor = ConsoleColor.Green);
                 WriteLine(
-                    "Выполняемые операции:\nДеление:\t/\nУмножение:\t*\nПрибавление:\t+\nВычитание:\t-\nЭкспоненцирование:\t^\n",
+                    $"The operations to be performed:\n{OperationsEnum.Divide}:\t/\n{OperationsEnum.Multiplication}:\t*\n{OperationsEnum.Addition}:\t+\n{OperationsEnum.Subtraction}:\t-\n{OperationsEnum.Exponentiation}:\t^\n",
                     ForegroundColor = ConsoleColor.DarkYellow);
-                WriteLine("Введите значения для вычислений:", ForegroundColor = ConsoleColor.White);
+                WriteLine("Enter the values for the calculations:", ForegroundColor = ConsoleColor.White);
                 try
                 {
                     Write("а: ");
                     a = double.Parse(ReadLine());
-                    Write("в:");
+                    Write("b: ");
                     b = double.Parse(ReadLine());
-                    WriteLine("Виберите операцию:");
+                    WriteLine("Select an operation:");
                     key = ReadLine();
                 }
                 catch (Exception)
                 {
-                    WriteLine("Ошибка ввода!", ForegroundColor = ConsoleColor.Red);
+                    WriteLine("Input Error!", ForegroundColor = ConsoleColor.Red);
                     ReadLine();
                     return;
                 }
                 string result = Calculation(a, b, key, ref oper);
-                WriteLine($"Результат операции {oper} с входными данными а: {a} и в: {b} равен:{result}");
-                WriteLine($"Для проболжения нажмите - Enter, Для выхода - х", ForegroundColor = ConsoleColor.Green);
+                WriteLine($"Result of operation {oper} with input data а: {a} и b: {b} is:{result}");
+                WriteLine($"To continue, press - Enter, To exit - х", ForegroundColor = ConsoleColor.Green);
                 repeat = ReadLine();
             }
         }
@@ -51,36 +51,36 @@ namespace Lab1_Calc
             {
                 case "/":
                 {
-                        oper = OperationsEnum.Вычитание.ToString();
+                        oper = OperationsEnum.Divide.ToString();
                         return calc.Divide(firstVal, secondVal);
                 }
 
                 case "*":
                 {
-                        oper = OperationsEnum.Умножение.ToString();
+                        oper = OperationsEnum.Multiplication.ToString();
                         return calc.Multiplication(firstVal, secondVal);
                 }
 
                 case "+":
                 {
-                        oper = OperationsEnum.Прибавление.ToString();
+                        oper = OperationsEnum.Addition.ToString();
                         return calc.Addition(firstVal, secondVal);
                 }
 
                 case "-":
                 {
-                        oper = OperationsEnum.Деление.ToString();
+                        oper = OperationsEnum.Subtraction.ToString();
                         return calc.Subtraction(firstVal, secondVal);
                 }
 
                 case "^":
                 {
-                        oper = OperationsEnum.Экспоненцирование.ToString();
+                        oper = OperationsEnum.Exponentiation.ToString();
                         return calc.Exponentiation(firstVal, secondVal);
                 }
 
                 default:
-                    return "Операция не выбрана или выбрана не верно!";
+                    return "Operation not selected or selected incorrectly!";
             }
         }
     }

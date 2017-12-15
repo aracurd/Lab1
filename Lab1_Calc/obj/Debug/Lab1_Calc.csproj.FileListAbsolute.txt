@@ -1,0 +1,12 @@
+D:\Projects\IT Academy\Calculator\Lab1_Calc\bin\Debug\Lab1_Calc.exe.config
+D:\Projects\IT Academy\Calculator\Lab1_Calc\bin\Debug\Lab1_Calc.exe
+D:\Projects\IT Academy\Calculator\Lab1_Calc\bin\Debug\Lab1_Calc.pdb
+D:\Projects\IT Academy\Calculator\Lab1_Calc\obj\Debug\Lab1_Calc.csprojResolveAssemblyReference.cache
+D:\Projects\IT Academy\Calculator\Lab1_Calc\obj\Debug\Lab1_Calc.exe
+D:\Projects\IT Academy\Calculator\Lab1_Calc\obj\Debug\Lab1_Calc.pdb
+C:\Users\Freedom\Source\Repos\Lab1\Lab1_Calc\bin\Debug\Lab1_Calc.exe.config
+C:\Users\Freedom\Source\Repos\Lab1\Lab1_Calc\obj\Debug\Lab1_Calc.exe
+C:\Users\Freedom\Source\Repos\Lab1\Lab1_Calc\obj\Debug\Lab1_Calc.pdb
+C:\Users\Freedom\Source\Repos\Lab1\Lab1_Calc\bin\Debug\Lab1_Calc.exe
+C:\Users\Freedom\Source\Repos\Lab1\Lab1_Calc\bin\Debug\Lab1_Calc.pdb
+C:\Users\Freedom\Source\Repos\Lab1\Lab1_Calc\obj\Debug\Lab1_Calc.csprojResolveAssemblyReference.cache

@@ -7,5 +7,6 @@
         string Addition(double a, double b);
         string Subtraction(double a, double b);
         string Exponentiation(double a, double b);
+        double Factorial(double num);
     }
 }

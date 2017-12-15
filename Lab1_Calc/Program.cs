@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using static System.Console;
 
 namespace Lab1_Calc
@@ -7,28 +8,34 @@ namespace Lab1_Calc
     {
         private static void Main(string[] args)
         {
-            string repeat = "";
-            double a =0;
-            double b = 0;
-            string key = "";
-            string oper = "";
+            var repeat = String.Empty;
+            var a = default(double); ;
+            var b = default(double); ;
+            var key = String.Empty;
+
             while (repeat != "x")
             {
                 Clear();
                 Title = "Simple calculator";
                 WriteLine($"{Title} \n", ForegroundColor = ConsoleColor.Green);
                 WriteLine(
-                    $"The operations to be performed:\n{OperationsEnum.Divide}:\t/\n{OperationsEnum.Multiplication}:\t*\n{OperationsEnum.Addition}:\t+\n{OperationsEnum.Subtraction}:\t-\n{OperationsEnum.Exponentiation}:\t^\n",
+                    $"The operations to be performed:\n{OperationsEnum.Divide}:\t/\n{OperationsEnum.Multiplication}:\t*\n{OperationsEnum.Addition}:\t+\n{OperationsEnum.Subtraction}:\t-\n{OperationsEnum.Exponentiation}:\t^\n{OperationsEnum.Factorial}:\tf\n",
                     ForegroundColor = ConsoleColor.DarkYellow);
                 WriteLine("Enter the values for the calculations:", ForegroundColor = ConsoleColor.White);
                 try
                 {
-                    Write("а: ");
-                    a = double.Parse(ReadLine());
-                    Write("b: ");
-                    b = double.Parse(ReadLine());
                     WriteLine("Select an operation:");
                     key = ReadLine();
+                   
+                    Write("а: ");
+                    a = double.Parse(ReadLine());
+
+                    if (key != "f")
+                    {
+                        Write("b: ");
+                        b = double.Parse(ReadLine());
+                    }
+                    
                 }
                 catch (Exception)
                 {
@@ -36,52 +43,64 @@ namespace Lab1_Calc
                     ReadLine();
                     return;
                 }
-                string result = Calculation(a, b, key, ref oper);
-                WriteLine($"Result of operation {oper} with input data а: {a} и b: {b} is:{result}");
+                WriteLine(Calculation(a, b, key));
                 WriteLine($"To continue, press - Enter, To exit - х", ForegroundColor = ConsoleColor.Green);
                 repeat = ReadLine();
             }
         }
 
-        private static string Calculation(double firstVal, double secondVal, string key, ref string oper)
+        private static string Calculation(double firstVal, double secondVal, string key)
         {
             var calc = new Operations();
-
+            var oper = string.Empty;
+            var res = string.Empty;
             switch (key)
             {
                 case "/":
                 {
                         oper = OperationsEnum.Divide.ToString();
-                        return calc.Divide(firstVal, secondVal);
-                }
+                        res = calc.Divide(firstVal, secondVal);
+                        break;
+                    }
 
                 case "*":
                 {
                         oper = OperationsEnum.Multiplication.ToString();
-                        return calc.Multiplication(firstVal, secondVal);
+                        res = calc.Multiplication(firstVal, secondVal);
+                        break;
                 }
 
                 case "+":
                 {
                         oper = OperationsEnum.Addition.ToString();
-                        return calc.Addition(firstVal, secondVal);
-                }
+                        res = calc.Addition(firstVal, secondVal);
+                        break;
+                    }
 
                 case "-":
                 {
                         oper = OperationsEnum.Subtraction.ToString();
-                        return calc.Subtraction(firstVal, secondVal);
-                }
+                        res = calc.Subtraction(firstVal, secondVal);
+                        break;
+                    }
 
                 case "^":
                 {
                         oper = OperationsEnum.Exponentiation.ToString();
-                        return calc.Exponentiation(firstVal, secondVal);
-                }
+                        res = calc.Exponentiation(firstVal, secondVal);
+                        break;
+                    }
+                case "f":
+                    {
+                        oper = OperationsEnum.Factorial.ToString();
+                        res = calc.Factorial(firstVal).ToString(CultureInfo.InvariantCulture);
+                        break;
+                    }
 
                 default:
                     return "Operation not selected or selected incorrectly!";
             }
+            return key == "f" ? $"Result of operation {oper} entered number а: {firstVal}  is: {res}" : $"Result of operation {oper} with input data а: {firstVal} и b: {secondVal} is: {res}";
         }
     }
 }

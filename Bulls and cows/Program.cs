@@ -35,6 +35,11 @@ namespace Bulls_and_cows
         {
             Write("Введите 4-х значное число: ");
             string value = ReadLine();
+            if (value.Length < 4 || value.Length > 4)
+            {
+                WriteLine("Число должно быть 4-х значное!!");
+            }
+
             eNumber = value?.Select(ch => ch - '0').ToArray();
         }
     }

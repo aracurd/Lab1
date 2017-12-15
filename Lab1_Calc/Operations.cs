@@ -31,5 +31,11 @@ namespace Lab1_Calc
         {
             return Math.Pow(a, b).ToString(CultureInfo.InvariantCulture);
         }
+
+        public double Factorial(double num)
+        {
+            return (num == 0) ? 1 : num * Factorial(num - 1);
+        }
     }
 }
+

@@ -6,7 +6,8 @@
         Multiplication,
         Addition,
         Subtraction,
-        Exponentiation
+        Exponentiation,
+        Factorial
     }
 }
  

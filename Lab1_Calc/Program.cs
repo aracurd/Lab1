@@ -8,10 +8,10 @@ namespace Lab1_Calc
     {
         private static void Main(string[] args)
         {
-            var repeat = String.Empty;
+            var repeat = string.Empty;
             var a = default(double); ;
             var b = default(double); ;
-            var key = String.Empty;
+            string key;
 
             while (repeat != "x")
             {
@@ -52,8 +52,9 @@ namespace Lab1_Calc
         private static string Calculation(double firstVal, double secondVal, string key)
         {
             var calc = new Operations();
-            var oper = string.Empty;
-            var res = string.Empty;
+            string oper;
+            string res;
+
             switch (key)
             {
                 case "/":

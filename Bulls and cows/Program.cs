@@ -6,41 +6,53 @@ namespace Bulls_and_cows
 {
     internal class Program
     {
-
         private static void Main(string[] args)
         {
-            var gLog = new GameLogic();
-            var enterNumber = new int[4];
+            var gLogics = new GameLogics();
+            Title = "Bulls and Cows";
+            WriteLine(Title + "\n", ForegroundColor = ConsoleColor.DarkGreen);
+            WriteLine("Enter your 4-digit number");
+            gLogics.ProposNumber = ReadLine();
 
-            Title = "Игра \"Быки и коровы\"";
-            WriteLine($"{Title}\n");
-            gLog.RundomNumderGen();
-            WriteLine(string.Join("", gLog.RundomNumber));
-            do
+            if (gLogics.ProposNumber?.Length > 4 || gLogics.ProposNumber?.Length < 4)
             {
-                WriteLine();
-                WriteLine(gLog.ResultShow()); 
-                UserEnter(ref enterNumber);
-                gLog.Checking(enterNumber);
+                WriteLine("Error! You entered an invalid number!", ForegroundColor = ConsoleColor.DarkRed);
+                ReadLine();
+                return;
+            }
+            WriteLine("", ForegroundColor = ConsoleColor.White);
+            var variety = gLogics.SetGenerator(gLogics.Revers(4)).ToList();
 
-            } while (gLog.CompleteMach != 4);
+            while (variety.Count > 1)
+            {
+                var guess = variety[0];
+                var bulls = default(int);
+                var cows = default(int);
+                Write($"My guess is {guess}.");
+                ReadLine();
+                gLogics.Checking(out bulls, out cows, gLogics.ProposNumber, guess);
+                for (var i = variety.Count - 1; i >= 0; i--)
+                {
+                    var totalBulls = default(int);
+                    var totalCows = default(int);
 
-            WriteLine("You win");
+                    for (var j = 0; j < 4; j++)
+                        if (variety[i][j] == guess[j])
+                            totalBulls++;
+                        else if (variety[i].Contains(guess[j]))
+                            totalCows++;
+                    if ((totalBulls != bulls) || (totalCows != cows))
+                        variety.RemoveAt(i);
+                }
 
+                WriteLine($"Bulls = {bulls}, Cows = {cows}");
+
+            }
+            ForegroundColor = ConsoleColor.DarkGreen;
+            WriteLine();
+            WriteLine(variety.Count == 1 ? $"Number is {variety[0]}!" : "No possible answer.");
 
             ReadLine();
-        }
-
-        public static void UserEnter(ref int[] eNumber)
-        {
-            Write("Введите 4-х значное число: ");
-            string value = ReadLine();
-            if (value.Length < 4 || value.Length > 4)
-            {
-                WriteLine("Число должно быть 4-х значное!!");
-            }
-
-            eNumber = value?.Select(ch => ch - '0').ToArray();
         }
     }
 }

@@ -1,54 +1,63 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Bulls_and_cows
 {
-    class GameLogic
+
+    public sealed class GameLogics
     {
-        public int CompleteMach { get; set; }
-        public int PartialMach { get; set; }
-        public int[] RundomNumber=  new int[4];
-        private readonly Random rand = new Random();
+        public string ProposNumber { get; set; }
 
-        public void RundomNumderGen()
+        public IEnumerable<string> Revers(int size)
         {
-            for (var i = 0; i < RundomNumber.Length; i++)
+            var revers = new List<string>();
+            if (size > 0)
             {
-                bool contais;
-                int next;
-                do
+                revers.AddRange(from s in Revers(size - 1) from n in "123456789" where !s.Contains(n) select s + n);
+            }
+            else
+                revers.Add("");
+            return revers;
+        }
+
+        public IEnumerable<T> SetGenerator<T>(IEnumerable<T> source)
+        {
+            var random = new Random();
+            var list = source.ToList();
+            var nums = new List<T>();
+            while (list.Count > 0)
+            {
+                var ix = random.Next(list.Count);
+                nums.Add(list[ix]);
+                list.RemoveAt(ix);
+            }
+            return nums;
+        }
+
+        public bool Checking(out int bulls, out int cows, string startNumber, string gesNumber)
+        {
+
+            bulls = 0;
+            cows = 0;
+
+            if (startNumber.Length < 2)
+                return false;
+            else
+            {
+                for (var i = 0; i < 4; i++)
                 {
-                    next = rand.Next(10);
-                    contais = false;
-                    for (var j = 0; j < i; j++)
+                    if (gesNumber.Contains(startNumber[i]))
                     {
-                        var n = RundomNumber[j];
-                        if (n != next) continue;
-                        contais = true;
-                        break;
+                        if (startNumber[i] == gesNumber[i])
+                            bulls++;
+                        else
+                            cows++;
                     }
-                } while (contais);
-                RundomNumber[i] = next;
-            }
-        }
-
-        public void Checking(int[] enterVal)
-        {
-            CompleteMach = 0;
-            PartialMach = 0;
-            for (int i = 0; i < 4; i++)
-            {
-                if (enterVal.Contains(RundomNumber[i]) )
-                {
-                    if (enterVal[i] == RundomNumber[i])
-                        CompleteMach++;
-                    else
-                        PartialMach++;
                 }
+                return true;
             }
-        }
 
-        public string ResultShow() => $"Bulls - {CompleteMach}, Cows - {PartialMach}";
-        
+        }
     }
 }

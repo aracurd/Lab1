@@ -1,0 +1,6 @@
+C:\Users\Freedom\source\repos\Lab1\Les\bin\Debug\Les.exe.config
+C:\Users\Freedom\source\repos\Lab1\Les\bin\Debug\Les.exe
+C:\Users\Freedom\source\repos\Lab1\Les\bin\Debug\Les.pdb
+C:\Users\Freedom\source\repos\Lab1\Les\obj\Debug\Les.csprojResolveAssemblyReference.cache
+C:\Users\Freedom\source\repos\Lab1\Les\obj\Debug\Les.exe
+C:\Users\Freedom\source\repos\Lab1\Les\obj\Debug\Les.pdb
